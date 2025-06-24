@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Pet Walking Game</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #a0e7e5, #b4f8c8);
+      overflow: hidden;
+    }
+
+    .game-container {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    .pet {
+      width: 100px;
+      height: 100px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/616/616408.png'); /* Dog Icon */
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      left: 100px;
+      top: 100px;
+      transition: transform 0.1s;
+    }
+  </style>
 </head>
 <body>
-    
+  <div class="game-container">
+    <div class="pet" id="pet"></div>
+  </div>
+
+  <script>
+    const pet = document.getElementById("pet");
+    let x = 100;
+    let y = 100;
+    const moveAmount = 20;
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") {
+        x += moveAmount;
+      } else if (e.key === "ArrowLeft") {
+        x -= moveAmount;
+      } else if (e.key === "ArrowUp") {
+        y -= moveAmount;
+      } else if (e.key === "ArrowDown") {
+        y += moveAmount;
+      }
+
+      pet.style.left = x + "px";
+      pet.style.top = y + "px";
+    });
+  </script>
 </body>
 </html>
